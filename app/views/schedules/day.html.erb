@@ -1,2 +1,43 @@
-<h1>Schedules#day</h1>
-<p>Find me in app/views/schedules/day.html.erb</p>
+<div class="row title">
+  <div class="col-xs-3">
+    <%= link_to week_schedules_path(time: @time.strftime('%F')) do %>
+      <h4 class="choose-type text-center">一周</h4>
+    <% end %>
+  </div>
+
+  <div class="col-xs-6 text-center">
+    <h4 class="current-week">
+      <%= @time.strftime('%m月%d日') %>
+    </h4>
+  </div>
+
+  <div class="col-xs-3 pull-right choose-date">
+    <%= link_to day_schedules_path(time: @time.yesterday.strftime('%F')) do %>
+        <i class="fa fa-arrow-left pull-left" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to day_schedules_path(time: @time.next_day.strftime('%F')) do %>
+        <i class="fa fa-arrow-right pull-right" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <% 1.upto(4).each do |i| %>
+    <% schedule = @schedules.find { |s| s.serial_number == i } %>
+    <tr class="text-center">
+      <td class="schedule-time">
+        <% if schedule.present? %>
+          <div><%= schedule&.start_at&.strftime('%H:%M') %></div>
+          <div>|</div>
+          <div><%= schedule&.end_at&.strftime('%H:%M') %></div>
+        <% end %>
+      </td>
+      <td style="background-color: <%= schedule&.course&.color %>">
+        <div><%= schedule&.course&.en_name %></div>
+        <div><%= schedule&.course&.cn_name %></div>
+        <div><%= schedule&.course&.description %></div>
+      </td>
+    </tr>
+
+  <% end %>
+</table>

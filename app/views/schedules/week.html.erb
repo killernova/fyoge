@@ -1,49 +1,47 @@
-  <div class="row title">
-    <div class="col-xs-3">
-      <h4 class="choose-type text-center">单日</h4>
-    </div>
+<div class="row title">
 
-    <div class="col-xs-6 text-center">
-      <h4 class="current-week">第<%= @time.to_date.cweek %>周
-        <!--(<%= @week_start.strftime('%m.%d') %> - <%= @week_end.strftime('%m.%d') %>)-->
-      </h4>
-    </div>
-
-    <div class="col-xs-3 pull-right choose-date">
-      <%= link_to week_schedules_path(time: @time.last_week.strftime('%F'))  do %>
-        <i class="fa fa-arrow-left pull-left" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to week_schedules_path(time: @time.next_week.strftime('%F'))  do %>
-        <i class="fa fa-arrow-right pull-right" aria-hidden="true"></i>
-      <% end %>
-    </div>
+  <div class="col-xs-6 text-center">
+    <h4 class="current-week">第<%= @time.to_date.cweek %>
+      周
+      <!--(<%= @week_start.strftime('%m.%d') %> - <%= @week_end.strftime('%m.%d') %>)-->
+    </h4>
   </div>
 
-  <table class="table table-bordered">
-    <thead>
+  <div class="col-xs-3 pull-right choose-date">
+    <%= link_to week_schedules_path(time: @time.last_week.strftime('%F')) do %>
+        <i class="fa fa-arrow-left pull-left" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to week_schedules_path(time: @time.next_week.strftime('%F')) do %>
+        <i class="fa fa-arrow-right pull-right" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th class="serial-number"></th>
+    <% @dates.each do |date| %>
+        <th class="date-title text-center"><%= date %></th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% (1..4).to_a.each do |i| %>
       <tr>
-        <th class="serial-number"></th>
-        <% @dates.each do |date| %>
-            <th class="date-title text-center"><%= date %></th>
+        <td><%= i %></td>
+        <% (1..7).to_a.each do |d| %>
+            <% schedule = find_schedule(@schedules, d, i) %>
+            <% course = schedule&.course %>
+            <td style="background-color: <%= course&.color %>" class="course"
+                data-path="<%= day_schedules_path(time: (@week_start + (d - 1).days).strftime('%F')) %>">
+              <div class="cn-name"><%= course&.cn_name %></div>
+            </td>
         <% end %>
       </tr>
-    </thead>
+  <% end %>
+  </tbody>
 
-    <tbody>
-      <% (1..4).to_a.each do |i| %>
-        <tr>
-          <td><%= i %></td>
-          <% (1..7).to_a.each do |d| %>
-            <% course = find_course_from_schedule(@schedules, d, i) %>
-            <td style="background-color: <%= course&.color %>">
-              <!--<div class="en-name"><%= course&.en_name %></div>-->
-              <div class="cn-name"><%= course&.cn_name %></div>
-              <!--<div class="detail"><%= course.present? ? "(#{course&.description})" : '' %></div>-->
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-
-  </table>
+</table>
 
