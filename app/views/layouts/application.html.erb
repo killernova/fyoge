@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
     minimum-scale=1.0, user-scalable=no">
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <title>Fyoge</title>
     <%= csrf_meta_tags %>
 
@@ -11,7 +12,7 @@
   </head>
 
   <body class="<%= controller_name %>" id="<%= controller_name.gsub('/', '-') %>-<%= action_name %>">
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
   </body>
