@@ -1,8 +1,23 @@
-@import 'schedules';
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'schedules';
+@import 'sessions';
+@import 'users';
+@import 'date-time-picker.min';
 
 
 html {
   height: 100%;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  vertical-align: middle;
+  line-height: 50px;
+  background-color: white;
+  font-size: 1.3em;
+}
+

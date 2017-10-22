@@ -1,0 +1,15 @@
+<div class="row footer">
+  <div class="col-xs-4 text-center">
+    <%= link_to '今日', day_schedules_path %>
+  </div>
+  <div class="col-xs-4 text-center">
+    <%= link_to '本周', week_schedules_path %>
+  </div>
+  <div class="col-xs-4 text-center">
+    <% if current_user %>
+      <%= link_to '我的', user_path(current_user) %>
+    <% else %>
+      <%= link_to '我的', login_path %>
+    <% end %>
+  </div>
+</div>

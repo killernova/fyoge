@@ -17,6 +17,17 @@ class SchedulesController < ApplicationController
                                                   @day_end)
   end
 
+  def new
+    @schedule = Schedule.new
+    @courses = Course.all
+    @teachers = User.teachers
+    @dates = { '一' => 1, '二' => 2, '三' => 3, '四' => 4, '五' => 5, '六' => 6, '七' => 7 }
+  end
+
+  def create
+
+  end
+
   private
 
   def set_date

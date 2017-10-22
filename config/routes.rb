@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  
-  resources :schedules, only: [] do
+
+  root 'schedules#day'
+
+  resources :sessions, only: [:create, :destroy]
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :users
+
+  resources :courses
+
+  resources :schedules do
     collection do
       get 'week'
       get 'day'

@@ -1,0 +1,29 @@
+<div class="row title">
+  <div class="col-xs-6 col-xs-offset-3 text-center"><h3 class="">Fyoga</h3></div>
+</div>
+
+<%= form_for @session, url: sessions_path do |f| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="form-group">
+          <%= f.text_field :user_name, class: 'form-control', placeholder: '用户名' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="form-group">
+          <%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="form-group">
+          <%= f.submit 'Login', class: 'form-control btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+<% end %>

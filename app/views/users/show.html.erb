@@ -1,0 +1,17 @@
+<% if current_user.admin? %>
+    <div class="admin-items">
+      <div class="item-box">
+        <%= link_to '新增课程', new_course_path %>
+      </div>
+      <hr>
+
+      <div class="item-box">
+        <%= link_to '新增课程表', new_schedule_path %>
+      </div>
+      <hr>
+    </div>
+<% end %>
+
+<div class="item-box">
+  <%= link_to '退出', logout_path, method: :delete %>
+</div>

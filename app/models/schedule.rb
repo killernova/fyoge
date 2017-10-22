@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :course
-  belongs_to :user
+  belongs_to :teacher, class_name: User, foreign_key: :user_id
   validate :uniqueness_of_serial_number
 
   private
