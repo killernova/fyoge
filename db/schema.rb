@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021022501) do
+ActiveRecord::Schema.define(version: 20171022045043) do
+
+  create_table "course_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "serial_number"
+    t.time "start_at"
+    t.time "end_at"
+    t.bigint "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_course_times_on_season_id"
+  end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "en_name"
@@ -46,6 +56,13 @@ ActiveRecord::Schema.define(version: 20171021022501) do
     t.integer "weekday"
   end
 
+  create_table "seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.boolean "default", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "level"
     t.datetime "valid_after"
@@ -68,4 +85,5 @@ ActiveRecord::Schema.define(version: 20171021022501) do
     t.string "user_name"
   end
 
+  add_foreign_key "course_times", "seasons"
 end

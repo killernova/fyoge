@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users
+  resources :users do
+    collection do
+      get :setting
+    end
+  end
 
   resources :courses
 

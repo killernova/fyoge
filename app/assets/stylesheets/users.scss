@@ -1,27 +1,36 @@
 .users {
+  background-color: $gray;
+  .items {
+    background-color: white;
+    padding: 0 15px;
+    margin-top: 20px;
+    hr {
+      padding: 0;
+      margin: 0;
+    }
+    .item {
+      padding: 15px 10px;
+      .fa {
+        color: $blue;
+        margin-right: 10px;
+        font-size: 1.1em;
+        &.fa-sign-out {
+          color: $red;
+        }
+      }
+      .setting {
+      }
+    }
+  }
   .container-fluid {
     padding: 0;
     .footer {
       left: 15px;
     }
   }
-  .admin-items {
-    background-color: white;
-    margin-bottom: 10px;
-  }
-  hr {
-    margin:0 10px;
-    padding: 0 10px;
-  }
-  background-color: #D3D0CF;
-  .item-box {
-    background-color: white;
-    padding: 10px;
-  }
+
 }
 
 #users-show {
-  a {
-    color: black;
-  }
+
 }

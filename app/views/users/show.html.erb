@@ -1,17 +1,21 @@
-<% if current_user.admin? %>
-    <div class="admin-items">
-      <div class="item-box">
-        <%= link_to '新增课程', new_course_path %>
-      </div>
-      <hr>
-
-      <div class="item-box">
-        <%= link_to '新增课程表', new_schedule_path %>
-      </div>
-      <hr>
-    </div>
-<% end %>
-
-<div class="item-box">
-  <%= link_to '退出', logout_path, method: :delete %>
+<div class="items">
+  <% if current_user.admin? %>
+      <%= link_to setting_users_path do %>
+        <div class="item">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <span>设置</span>
+        </div>
+      <% end %>
+  <% end %>
 </div>
+
+<div class="items">
+  <%= link_to logout_path, method: :delete do %>
+      <div class="item">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <span>退出</span>
+      </div>
+  <% end %>
+</div>
+
+

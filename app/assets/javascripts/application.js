@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require date-time-picker.min
+//= require common
 //= require_tree .

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial_number: 1
+  start_at: 2017-10-22 12:50:43
+  end_at: 2017-10-22 12:50:43
+  season: one
+
+two:
+  serial_number: 1
+  start_at: 2017-10-22 12:50:43
+  end_at: 2017-10-22 12:50:43
+  season: two

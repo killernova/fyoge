@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'variables';
 @import 'schedules';
 @import 'sessions';
 @import 'users';
@@ -8,6 +9,10 @@
 
 html {
   height: 100%;
+  color: $black;
+  a {
+    color: #2E2E2E;
+  }
 }
 
 .footer {

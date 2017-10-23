@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def setting
+
+  end
+
 
   private
 
