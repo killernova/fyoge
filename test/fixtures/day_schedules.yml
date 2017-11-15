@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  week_schedule_id: 1
+  start_at: 2017-11-11
+
+two:
+  week_schedule_id: 1
+  start_at: 2017-11-11

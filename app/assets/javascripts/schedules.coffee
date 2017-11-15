@@ -5,5 +5,5 @@ $(document).on 'turbolinks:load', ->
       Turbolinks.visit path
 
 
-  if $('#schedules-new').length
-    $('.date-picker').DateTimePicker({mode: 'time'})
+#  if $('#schedules-new').length
+#    $( "#schedule-date" ).date('jtsage-datebox')

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <title>Fyoga后台管理</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'admin/admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="<%= params[:controller].gsub('/', '-') %>" id="<%= params[:controller].gsub('/', '-') %>-<%= action_name %>">
+<div class="container-fluid">
+  <%= yield %>
+</div>
+</body>
+</html>

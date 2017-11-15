@@ -1,0 +1,48 @@
+<div class="row title">
+
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+    <h4 class="current-week">第<%= @time.to_date.cweek %>
+      周
+      <!--(<%= @week_start.strftime('%m.%d') %> - <%= @week_end.strftime('%m.%d') %>)-->
+    </h4>
+  </div>
+
+  <div class="col-xs-3 pull-right choose-date">
+    <%= link_to week_schedules_path(time: @time.last_week.strftime('%F')) do %>
+        <i class="fa fa-arrow-left pull-left" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to week_schedules_path(time: @time.next_week.strftime('%F')) do %>
+        <i class="fa fa-arrow-right pull-right" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: 'table', locals: { dates: @dates, schedule: @schedule, schedules: @schedules, week_start: @week_start } %>
+
+<button class="btn btn-primary add-new-week-schedule pull-right">新增课程表</button>
+
+<div class="options hidden">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="pull-right">时令</div>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag :season, options_from_collection_for_select(Season.all, 'id', 'name'), class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="pull-right">课程日期</div>
+    </div>
+    <div class="col-md-8">
+      <input type="text" class="new-schedule-date form-control" name="schedule-date">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="btn btn-success pull-right confirm-button">下一步</div>
+      <div class="btn btn-danger pull-right cancel-button">取消</div>
+    </div>
+  </div>
+</div>
+

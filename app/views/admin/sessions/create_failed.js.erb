@@ -1,0 +1,14 @@
+<% if @user.nil? %>
+displayError($('.mobile-input:visible'), '该用户不存在')
+<% elsif @user.errors.messages[:password].present? %>
+displayError($('#session_password'), '<%= @user.errors.messages[:password].first %>')
+<% elsif @user.errors.messages[:verification_code].present? %>
+displayError($('#session_verification_code'), '<%= @user.errors.messages[:verification_code].first %>')
+<% end %>
+
+
+function displayError(obj, message) {
+    obj.parents('.form-item').addClass('form-item-error')
+    obj.parents('.form-item').next().removeClass('hidden')
+    obj.parents('.form-item').next().find('.error-message').text(message)
+}
