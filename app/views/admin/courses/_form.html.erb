@@ -1,0 +1,35 @@
+<%= form_for [:admin, @course], html: { class: 'form-horizontal' } do |f| %>
+    <div class="form-group">
+      <%= f.label :cn_name, '中文名称(必填)', class: 'control-label col-md-2 col-md-offset-2', required: true %>
+      <div class="col-md-4">
+        <%= f.text_field :cn_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :en_name, '英文名称', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.text_field :en_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, '描述信息', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :color, '背景颜色', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.color_field :color, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+        <%= f.submit '提交', class: 'btn btn-primary pull-right' %>
+      </div>
+    </div>
+<% end %>

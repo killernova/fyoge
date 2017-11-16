@@ -1,0 +1,33 @@
+<div class="row title">
+  <div class="col-md-12 text-center"><h3>课程列表</h3></div>
+</div>
+
+<table class="course-lists table table-hover">
+  <thead>
+    <tr>
+      <th>中文名称</th>
+      <th>英文名称</th>
+      <th>描述信息</th>
+      <th>颜色</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.cn_name %></td>
+        <td><%= course.en_name %></td>
+        <td><%= course.description %></td>
+        <td>
+          <div class="course-color" style="background-color: <%= course.color %>"></div>
+        </td>
+        <td>
+          <%= link_to '编辑', edit_admin_course_path(course), class: 'btn btn-primary' %>
+          <%= link_to '删除', admin_course_path(course), method: :delete, data: { confirm: '确定删除该记录吗？'},
+          class: 'btn btn-warning', remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

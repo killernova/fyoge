@@ -1,0 +1,17 @@
+#admin-courses-index {
+  th, td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    .edit {
+      margin-right: 10px;
+    }
+    .course-color {
+      width: 100px;
+      padding: 0;
+      height: 30px;
+      margin: auto;
+    }
+  }
+}

@@ -4,15 +4,42 @@
       tr {
         td {
           color: white;
-          width: 13%;
+          width: 12.5%;
           height: 95px;
           vertical-align: middle;
           &.course-time {
             color: black;
-            width: 9%;
           }
         }
       }
+    }
+  }
+
+  .switch-schedule {
+    position: fixed;
+    bottom: 20%;
+    right: 0;
+    height: 80px;
+    width: 30px;
+    z-index: 1000;
+    .last-week, .next-week {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      color: white;
+      background-color: #40bafd;
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .last-week {
+      top: 0;
+    }
+    .next-week {
+      bottom: 0;
     }
   }
 
@@ -21,7 +48,7 @@
     .row {
       margin-bottom: 20px;
     }
-    .cancel-button {
+    .cancel-button, .destroy-button {
       margin-right: 20px;
     }
   }

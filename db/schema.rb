@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113115729) do
+ActiveRecord::Schema.define(version: 20171116124241) do
 
   create_table "course_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "serial_number"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20171113115729) do
     t.string "user_name"
     t.string "mobile"
     t.string "remember_digest"
+    t.string "nick_name"
+    t.boolean "soft_delete"
   end
 
   create_table "week_schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

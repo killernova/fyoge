@@ -1,0 +1,35 @@
+<%= form_for [:admin, @user], html: { class: 'form-horizontal' } do |f| %>
+    <div class="form-group">
+      <%= f.label :name, '姓名(必填)', class: 'control-label col-md-2 col-md-offset-2', required: true %>
+      <div class="col-md-4">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :sex, '性别', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.select :sex, options_for_select([['男', '男'], ['女', '女']]), {prompt: '请选择性别'}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :mobile, '手机', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.text_field :mobile, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :nick_name, '昵称', class: 'control-label col-md-2 col-md-offset-2' %>
+      <div class="col-md-4">
+        <%= f.text_field :nick_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+        <%= f.submit '提交', class: 'btn btn-primary pull-right' %>
+      </div>
+    </div>
+<% end %>

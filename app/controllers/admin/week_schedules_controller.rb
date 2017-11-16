@@ -2,16 +2,13 @@ module Admin
   class WeekSchedulesController < AdminController
     before_action :set_date, except: [:new]
     def new
-      if params[:time].blank?
-        return redirect to admin_week_schedule_path, alert: '请选择时间'
-      end
-
-      time = (Time.parse(params[:time]) + 8.hours).utc
+      time = params[:time].present? ? (Time.parse(params[:time]) + 8.hours).utc : Time.current
       module_time = params[:module_time].present? ? (Time.parse(params[:module_time]) + 8.hours).utc : nil
       @week_start = time.beginning_of_week
       @week_end = time.end_of_week
       @schedule = WeekSchedule.find_or_initialize_by(start_at: @week_start.strftime('%F'))
       if @schedule.new_record?
+        return redirect_to admin_week_schedules_path if params[:season_id].blank?
         @schedule.season_id = params[:season_id]
         @schedule.save
         @schedule.create_blank_data
@@ -27,7 +24,8 @@ module Admin
     def edit
       @schedule = WeekSchedule.find params[:id]
       @week_start = @schedule.start_at
-      @schedules = @schedule&.schedules&.includes(:course)
+      @week_end = @week_start + 7.days
+      @schedules = @schedule&.schedules&.includes(:course, :teacher)
       @dates = %w(一 二 三 四 五 六 日)
     end
 

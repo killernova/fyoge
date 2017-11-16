@@ -6,7 +6,6 @@ class SchedulesController < ApplicationController
     @week_end = @time.end_of_week
     @schedules = Schedule.includes(:course).where('start_at >= ? and end_at < ?', @week_start,
                                                   @week_end)
-                     .group_by {|s| s.weekday}
     @dates = %w(一 二 三 四 五 六 日)
   end
 
@@ -26,12 +25,25 @@ class SchedulesController < ApplicationController
 
   def updates
     week_schedule = WeekSchedule.find params[:week_schedule_id]
-    schedule = week_schedule.schedules.find_by(weekday: params[:weekday], serial_number: params[:serial_number])
+    schedule = Schedule.find_or_create_by(weekday: params[:weekday],
+                                          serial_number: params[:serial_number])
     if schedule.update course_id: params[:course_id], user_id: params[:user_id]
       course = schedule.course
       return render json: { message: 'ok', cn_name: course.cn_name, en_name: course.en_name,
                             color: course.color, description: course.description, teacher: schedule.teacher.name }
+    else
+      return render json: { message: 'error', errors: schedule.errors.messages }
     end
+  end
+
+  def clear
+    schedule = Schedule.find params[:id]
+    if schedule.update(user_id: nil, course_id: nil)
+      return render json: { message: 'ok' }
+    else
+      return render json: { message: 'error', errors: schedule.errors.messages }
+    end
+
   end
 
   private

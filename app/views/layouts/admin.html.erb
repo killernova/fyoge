@@ -11,7 +11,14 @@
 
 <body class="<%= params[:controller].gsub('/', '-') %>" id="<%= params[:controller].gsub('/', '-') %>-<%= action_name %>">
 <div class="container-fluid">
-  <%= yield %>
+  <div class="sidebar">
+    <%= image_tag 'sidebar-background.jpeg', class: 'background-image' %>
+    <div class="cover"></div>
+    <%= render 'shares/side_bar_menu' %>
+  </div>
+  <div class="content">
+    <%= yield %>
+  </div>
 </div>
 </body>
 </html>

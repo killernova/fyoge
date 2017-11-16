@@ -5,6 +5,7 @@ class User < ApplicationRecord
   scope :teachers, -> { joins(:roles).where('roles.name = ?', 'teacher') }
   scope :admins, -> { joins(:roles).where('roles.name = ?', 'admin') }
   scope :students, -> { joins(:roles).where('roles.name = ?', 'student') }
+  include SoftDelete
   attr_accessor :remember_token
   validates :mobile, presence: true, uniqueness: true, format: {
       with: /\A1[3578]{1}\d{9}\Z/

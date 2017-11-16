@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require bootbox.min
 //= require bootstrap-datetimepicker.min
+//= require jquery.validate.min
 //= require common
 //= require_tree .
 

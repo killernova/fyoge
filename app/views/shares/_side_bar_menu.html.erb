@@ -1,0 +1,52 @@
+<ul class="menus">
+  <li class="child-menus">
+    <div class="title">课程表管理</div>
+    <ul class="items">
+      <li class="item">
+        <%= link_to '本周课程表', admin_week_schedules_path %>
+      </li>
+      <li class="item">
+        <%= link_to '编辑课程表', new_admin_week_schedule_path(time: params[:time]) %>
+      </li>
+      <li class="item">
+        <%= link_to '新增课程表', new_admin_week_schedule_path, class: 'add-new-week-schedule' %>
+      </li>
+    </ul>
+  </li>
+
+  <li class="child-menus">
+    <div class="title">课程管理</div>
+    <ul class="items">
+      <li class="item">
+        <%= link_to '所有课程', admin_courses_path %>
+      </li>
+      <li class="item">
+        <%= link_to '新增课程', new_admin_course_path, class: 'add-new-course' %>
+      </li>
+    </ul>
+  </li>
+
+  <li class="child-menus">
+    <div class="title">会员管理</div>
+    <ul class="items">
+      <li class="item">
+        <%= link_to '所有会员', admin_users_path %>
+      </li>
+      <li class="item">
+        <%= link_to '新增会员', new_admin_user_path, class: 'add-new-user' %>
+      </li>
+    </ul>
+  </li>
+
+  <li class="child-menus">
+    <div class="title">时令管理</div>
+    <ul class="items">
+      <li class="item">
+        <%= link_to '所有时令', admin_week_schedules_path %>
+      </li>
+      <li class="item">
+        <%= link_to '新增时令', new_admin_week_schedule_path, class: 'add-new-week-schedule' %>
+      </li>
+    </ul>
+  </li>
+</ul>

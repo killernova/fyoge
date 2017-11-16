@@ -18,7 +18,7 @@
             <% course = s&.course %>
             <td style="background-color: <%= course&.color %>" class="course"
                 data-path="<%= day_schedules_path(time: (week_start + (d - 1).days).strftime('%F')) %>"
-            data-weekday="<%= d %>" data-serial-number="<%= i %>">
+            data-weekday="<%= d %>" data-serial-number="<%= i %>" data-schedule-id="<%= s&.id %>">
               <div class="cn-name"><%= course&.cn_name %></div>
               <div class="en-name"><%= course&.en_name %></div>
               <div class="description"><%= course&.description.present? ? "(#{course&.description})" : '' %></div>

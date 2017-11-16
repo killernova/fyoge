@@ -21,11 +21,16 @@ Rails.application.routes.draw do
       get 'day'
       post 'updates'
     end
+    member do
+      post 'clear'
+    end
   end
 
   get 'admin', to: 'admin/week_schedules#index'
   namespace :admin do
     resources :sessions, only: [:create, :destroy]
     resources :week_schedules, except: [:show]
+    resources :courses
+    resources :users
   end
 end
