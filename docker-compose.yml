@@ -3,9 +3,6 @@ version: '2'
 services:
   db:
     image: 'mysql:5.7'
-    environment:
-      MYSQL_USER: 'root'
-      MYSQL_ROOT_PASSWORD: 'ewvbcx3jci59sp4532hjnh'
     ports:
       - '3007:3306'
     volumes:
