@@ -27,7 +27,7 @@
 /spring/*.pid
 
 # Ignore upload files
-/public/uploads/*
+/public
 
 # Ignore all coverage files
 /coverage
