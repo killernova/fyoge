@@ -1,0 +1,9 @@
+/fyoga/log/production.log {
+    daily
+    copytruncate
+    rotate 30
+    maxage 30
+    dateext
+    dateyesterday
+    missingok
+}
