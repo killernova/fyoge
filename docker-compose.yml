@@ -1,15 +1,15 @@
-version: '2'
+version: '3'
 
 services:
   db:
     image: 'mysql:5.7'
     environment:
       MYSQL_USER: 'root'
-      MYSQL_ROOT_PASSWORD: 'ewvbcxvesd324rfg4532hjnh'
+      MYSQL_ROOT_PASSWORD: 'ewvbcx3jci59sp4532hjnh'
     ports:
       - '3007:3306'
     volumes:
-      - '/Users/shared/mysql:/var/lib/mysql'
+      - '/data/mysql:/var/lib/mysql'
 
   redis:
     image: 'redis:3.2-alpine'
@@ -23,11 +23,11 @@ services:
       - 'redis'
     build: .
     ports:
-      - '7007:7007'
+      - '3000:3000'
     volumes:
-      - '.:/fyoga'
+      - './public:/fyoga/public'
     env_file:
-      - '.fyoga.env'
+      - '.env'
 
 #  sidekiq:
 #    depends_on:
