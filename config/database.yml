@@ -23,7 +23,7 @@ development:
 
 staging:
   <<: *default
-  password: <%= ENV['CAPA_WEB_DATABASE_PASSWORD'] %>
+  password: <%= ENV['FYOGA_DATABASE_PASSWORD'] %>
   database: fyoga_staging
 
 # Warning: The database defined as "test" will be erased and
