@@ -55,5 +55,5 @@ test:
 production:
   <<: *default
   database: fyoga_production
-  username: fyoga
   password: <%= ENV['CAPA_WEB_DATABASE_PASSWORD'] %>
+  host: db

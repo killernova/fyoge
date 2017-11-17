@@ -3,7 +3,8 @@
 # state_path "#{app_root}/tmp/pids/puma.state"
 # stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
 daemonize false
-port 7007
+port 3000
+environment ENV.fetch("RAILS_ENV") { "development" }
 # if Rails.env.production?
 #   workers 4
 #   threads 4, 10
