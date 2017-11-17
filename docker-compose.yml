@@ -29,6 +29,15 @@ services:
     env_file:
       - '.env'
 
+  nginx:
+    build: ./nginx
+    ports:
+      - "8980:80"
+    volumes_from:
+      - website
+    links:
+      - website:website
+
 #  sidekiq:
 #    depends_on:
 #      - 'db'
