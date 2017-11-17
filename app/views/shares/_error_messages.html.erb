@@ -1,0 +1,11 @@
+<% if object.errors.messages. present? %>
+    <div class="error-messages">
+      <ul>
+        <% object.errors.messages.each do |key, val| %>
+            <% val.each do |v| %>
+                <li><%= key %> <%= v %></li>
+            <% end %>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="row title">
+  <div class="col-md-12 text-center"><h3>时令详情</h3></div>
+</div>
+
+<table class="course_time-lists table table-hover">
+  <thead>
+  <tr>
+    <th>课程序号</th>
+    <th>开始时间</th>
+    <th>结束时间</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @course_times.each do |course_time| %>
+      <tr>
+        <td><%= course_time.serial_number %></td>
+        <td><%= course_time.start_at.strftime('%H:%M') %></td>
+        <td><%= course_time.end_at.strftime('%H:%M') %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

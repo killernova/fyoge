@@ -1,0 +1,43 @@
+<div class="week-choise">
+  <%= link_to schedules_path(time: @time.last_week.strftime('%F')), class: 'last' do %>
+      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+  <% end %>
+  <div class="this-week">
+    第<%= @time.to_date.cweek %>周
+  </div>
+  <%= link_to schedules_path(time: @time.next_week.strftime('%F')), class: 'next' do %>
+      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+  <% end %>
+</div>
+<hr class="first-hr">
+<div class="course-time"></div>
+<% 7.times do |i| %>
+    <% is_today = Time.current.day == (@time.beginning_of_week + i.days).day %>
+    <div class="week-day <%= is_today ? 'is-today' : 'not-today' %>">
+      <div class="week">周<%= @dates[i] %></div>
+      <div class="day"><%= (@time.beginning_of_week + i.days).strftime('%m-%d') %></div>
+      <% if is_today %>
+        <div class="underline"></div>
+      <% end %>
+    </div>
+<% end %>
+<div class="clear"></div>
+<div class="course-list">
+  <% 4.times do |i| %>
+    <% 8.times do |j| %>
+      <% if j == 0 %>
+          <div class="serial-number course-content">
+            <div class="number"><%= i + 1 %></div>
+          </div>
+      <% else %>
+          <% schedule = find_schedule(@schedules, (j + 1), (i + 1)) %>
+          <% course = schedule&.course %>
+          <div class="course-info course-content <%= i == 3 ? '' : 'no-bottom-border' %> <%= course.present? ? 'has-course' : '' %>"
+              data-schedule-id="<%= schedule&.id %>">
+            <div class="cn-name" style="background-color: <%= course&.color %>"><%= course&.cn_name %></div>
+          </div>
+      <% end %>
+    <% end %>
+    <div class="clear"></div>
+  <% end %>
+</div>

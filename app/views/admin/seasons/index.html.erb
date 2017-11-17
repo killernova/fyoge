@@ -1,0 +1,31 @@
+<div class="row title">
+  <div class="col-md-12 text-center"><h3>时令列表</h3></div>
+</div>
+
+<table class="season-lists table table-hover">
+  <thead>
+  <tr>
+    <th>名称</th>
+    <th>默认</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @seasons.each do |season| %>
+      <tr>
+        <td><%= season.name %></td>
+        <td><%= season.default ? '是' : '否' %></td>
+        <td>
+          <%= link_to '查看', admin_season_path(season), class: 'btn btn-default', remote: true %>
+          <%= link_to '编辑', edit_admin_season_path(season), class: 'btn btn-primary' %>
+          <%= link_to '删除', admin_season_path(season), method: :delete, data: { confirm: '确定删除该时令吗？'},
+                      class: 'btn btn-warning', remote: true %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="content-cover"></div>
+<div class="content-container"></div>

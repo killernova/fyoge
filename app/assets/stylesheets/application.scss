@@ -16,6 +16,13 @@ html {
     color: #2E2E2E;
   }
 }
+body {
+  height: 100vh;
+}
+
+.clear {
+  clear: both;
+}
 
 .footer {
   position: fixed;

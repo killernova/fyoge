@@ -7,19 +7,37 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-.fyoga.env
-
-/node_modules
-/yarn-error.log
-
+# Ignore Byebug command history file.
 .byebug_history
+
+# Igonre database information
+/config/database.yml
+
+# Igonre .yml files of redis and sidekiq
+/config/redis.yml
+/config/sidekiq.yml
+
+#ignore Spring files
+/spring/*.pid
+
+# Ignore upload files
+/public/uploads/*
+
+# Ignore all coverage files
+/coverage
+
+# Ignore log file of failure rspec
+/.failure-rspec.txt
+
+# Ignore env file
+*.env
+
+# Igonre deploy script
+/deploy-docker.sh
+/deploy-docker-staging.sh

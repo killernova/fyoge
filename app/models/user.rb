@@ -1,13 +1,15 @@
 class User < ApplicationRecord
   has_one :user_info
-  has_secure_password
+  has_secure_password validations: false
   has_and_belongs_to_many :roles
   scope :teachers, -> { joins(:roles).where('roles.name = ?', 'teacher') }
   scope :admins, -> { joins(:roles).where('roles.name = ?', 'admin') }
   scope :students, -> { joins(:roles).where('roles.name = ?', 'student') }
   include SoftDelete
-  attr_accessor :remember_token
-  validates :mobile, presence: true, uniqueness: true, format: {
+  attr_accessor :remember_token, :role_id
+  default_scope -> { where(soft_delete: false) }
+  before_create :set_role, if: -> { roles.blank? }
+  validates :mobile, allow_blank: true, uniqueness: true, format: {
       with: /\A1[3578]{1}\d{9}\Z/
   }
 
@@ -21,6 +23,18 @@ class User < ApplicationRecord
 
   def student?
     roles.pluck(:name).include? 'student'
+  end
+
+  def role_id
+    roles.where.not(name: 'admin').ids.first
+  end
+
+  def role_id=(value)
+    return set_role if value.blank?
+    role = Role.find(value)
+    return if role.name == 'admin'
+    roles.destroy_all
+    roles << Role.find(value)
   end
 
   def self.digest(string)
@@ -45,4 +59,11 @@ class User < ApplicationRecord
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password? remember_token
   end
+
+  private
+
+  def set_role
+    roles << Role.find_by(name: 'student')
+  end
+
 end

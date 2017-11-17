@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'schedules#day'
+  root 'schedules#index'
 
   get 'admin/login', to: 'admin/sessions#new'
   resources :sessions, only: [:create, :destroy]
@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     resources :week_schedules, except: [:show]
     resources :courses
     resources :users
+    resources :seasons
   end
 end

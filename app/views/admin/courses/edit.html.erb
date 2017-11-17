@@ -1,2 +1,8 @@
+<!-- error messages -->
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: 'shares/error_messages', locals: { object: @course } %>
+  </div>
+</div>
 <h3 class="text-center">编辑课程</h3>
 <%= render 'form' %>

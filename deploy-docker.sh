@@ -1,5 +1,5 @@
 #! /bin/bash
-ssh root@111.231.69.22 <<'ENDSSH'
+ssh root@101.132.158.123 <<'ENDSSH'
 cd ~/fyoga
 git pull origin master
 docker-compose build

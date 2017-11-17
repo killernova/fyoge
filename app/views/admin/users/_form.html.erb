@@ -9,7 +9,8 @@
     <div class="form-group">
       <%= f.label :sex, '性别', class: 'control-label col-md-2 col-md-offset-2' %>
       <div class="col-md-4">
-        <%= f.select :sex, options_for_select([['男', '男'], ['女', '女']]), {prompt: '请选择性别'}, class: 'form-control' %>
+        <%= f.select :sex, options_for_select([['男', '男'], ['女', '女']], [@user.sex, @user.sex]),
+                     {prompt: '请选择性别'}, class: 'form-control' %>
       </div>
     </div>
 
@@ -26,6 +27,17 @@
         <%= f.text_field :nick_name, class: 'form-control' %>
       </div>
     </div>
+
+    <% unless @user.admin? %>
+        <div class="form-group">
+          <%= f.label :role_id, '角色', class: 'control-label col-md-2 col-md-offset-2' %>
+          <div class="col-md-4">
+            <%= f.select :role_id, options_from_collection_for_select(Role.where.not(name: 'admin'), :id, :name),
+                         {prompt: '请选择角色'}, class: 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+
 
     <div class="row">
       <div class="col-md-6 col-md-offset-2">

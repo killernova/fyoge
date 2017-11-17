@@ -6,6 +6,7 @@
 @import 'week_schedules';
 @import 'courses';
 @import 'users';
+@import 'seasons';
 
 
 html {
@@ -21,6 +22,8 @@ html {
 
 .sidebar {
   height: 100vh;
+  min-height: 800px;
+  min-width: 200px;
   position: fixed;
   width: 17%;
   left: 0;
@@ -77,6 +80,22 @@ html {
       color: #E0E0E0;
     }
   }
+}
+
+.admin-header {
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  background-color: $gray;
+  .sign-out {
+    margin-left: 20px;
+  }
+}
+
+th, td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 

@@ -1,6 +1,6 @@
 module Admin
   class UsersController < AdminController
-    before_action :set_user, only: [:edit, :create, :destroy, :update]
+    before_action :set_user, only: [:edit, :show, :destroy, :update]
     def index
       @users = User.all
     end
@@ -39,7 +39,7 @@ module Admin
     private
 
     def user_params
-      params.require(:user).permit(:name, :mobile, :nick_name, :sex)
+      params.require(:user).permit(:name, :mobile, :nick_name, :sex, :role_id)
     end
 
     def set_user

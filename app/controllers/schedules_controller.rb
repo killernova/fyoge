@@ -1,5 +1,18 @@
 class SchedulesController < ApplicationController
-  before_action :set_date
+  before_action :set_date, except: [:show]
+
+  def index
+    @week_start = @time.beginning_of_week
+    @week_end = @time.end_of_week
+    week_schedule = WeekSchedule.find_by(start_at: @week_start)
+    @schedules = week_schedule&.schedules&.includes(:course)
+    @dates = %w(一 二 三 四 五 六 日)
+  end
+
+  def show
+    @schedule = Schedule.find params[:id]
+    @course = @schedule.course
+  end
 
   def week
     @week_start = @time.beginning_of_week

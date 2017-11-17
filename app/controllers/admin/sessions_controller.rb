@@ -1,5 +1,6 @@
 module Admin
   class SessionsController < AdminController
+    skip_before_action :authenticate_admin!
     def new
       @user = User.new
     end
@@ -16,7 +17,7 @@ module Admin
 
     def destroy
       logout
-      redirect_to login_path
+      redirect_to admin_login_path
     end
 
     private

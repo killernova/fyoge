@@ -1,0 +1,38 @@
+<div class="course-card">
+  <div class="title">
+    <span class="back">
+      <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+    </span>
+    <span>课程详情</span>
+  </div>
+  <div class="cn-name"><%= @course&.cn_name %></div>
+  <div class="course-detail">
+    <div class="en-name">
+      <i class="fa fa-language" aria-hidden="true"></i>
+      <span class="title">英文名称</span>
+      <span class="content"><%= @course&.en_name %></span>
+    </div>
+    <hr>
+    <div class="description">
+      <i class="fa fa-book" aria-hidden="true"></i>
+      <span class="title">描述信息</span>
+      <span class="content"><%= @course&.description %></span>
+    </div>
+    <hr>
+    <div class="course-time">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="title">上课时间</span>
+      <span class="content">
+        <%= @schedule.start_at&.strftime('%H:%M') %> - <%= @schedule.end_at&.strftime('%H:%M') %>
+      </span>
+    </div>
+    <hr>
+    <div class="teacher">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <span class="title">老师</span>
+      <span class="content"><%= @schedule&.teacher&.nick_name %></span>
+    </div>
+  </div>
+</div>
+
+<div class="appointment">预约课程</div>

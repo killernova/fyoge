@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <title>Fyoga后台管理</title>
   <%= csrf_meta_tags %>
 
@@ -11,12 +11,16 @@
 
 <body class="<%= params[:controller].gsub('/', '-') %>" id="<%= params[:controller].gsub('/', '-') %>-<%= action_name %>">
 <div class="container-fluid">
-  <div class="sidebar">
-    <%= image_tag 'sidebar-background.jpeg', class: 'background-image' %>
-    <div class="cover"></div>
-    <%= render 'shares/side_bar_menu' %>
-  </div>
+  <% if current_user&.admin? %>
+      <div class="sidebar">
+        <%= image_tag 'sidebar-background.jpeg', class: 'background-image' %>
+        <div class="cover"></div>
+        <%= render 'shares/side_bar_menu' %>
+      </div>
+  <% end %>
+
   <div class="content">
+    <%= render 'shares/admin_header' %>
     <%= yield %>
   </div>
 </div>

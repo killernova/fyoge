@@ -14,6 +14,13 @@
 //= require jquery
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require jtsage-datebox.min
+//= require bootbox.min
 //= require common
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    $('.notice').on('click', function(e) {
+        e.preventDefault();
+        bootbox.alert('暂未开放，敬请期待...')
+    })
+})

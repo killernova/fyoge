@@ -1,0 +1,12 @@
+<% if current_user&.admin? %>
+  <div class="row admin-header">
+    <div class="col-md-12">
+      <%= link_to admin_session_path(current_user), method: :delete, class: 'sign-out pull-right' do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+      <% end %>
+      <span class="info pull-right">
+        欢迎回来 <%= current_user.name %>
+      </span>
+    </div>
+  </div>
+<% end %>
