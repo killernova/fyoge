@@ -19,8 +19,6 @@ MAINTAINER Killernova <enternicky@126.com>
 # images. It's not necessary but it's a good habit.
 
 
-RUN env
-
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       libmysqlclient-dev build-essential nodejs git-all cron vim
