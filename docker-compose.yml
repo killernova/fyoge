@@ -23,6 +23,7 @@ services:
       - '3000:3000'
     volumes:
       - './public:/fyoga/public'
+      - './log:/fyoga/log'
     env_file:
       - '.env'
 
