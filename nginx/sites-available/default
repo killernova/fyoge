@@ -8,7 +8,7 @@ server {
   client_max_body_size 5M;
   server_name website;
   keepalive_timeout 200;
-  root /root/fyoga/public;
+  root /fyoga/public;
   access_log /var/log/nginx/access.log;
   error_log /var/log/nginx/error.log;
 
