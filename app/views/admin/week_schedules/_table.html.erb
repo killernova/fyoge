@@ -12,7 +12,7 @@
   <% (1..4).to_a.each do |i| %>
       <tr class="text-center">
         <% course_time = schedule&.season&.course_times&.find_by(serial_number: i) %>
-        <td class="course-time"><%= course_time&.start_at&.strftime('%H:%m') %> ~ <%= course_time&.end_at&.strftime('%H:%m') %></td>
+        <td class="course-time"><%= course_time&.start_at&.strftime('%H:%m') %> ~ <%= course_time&.end_at&.strftime('%H:%M') %></td>
         <% (1..7).to_a.each do |d| %>
             <% s = find_schedule(schedules, d, i) %>
             <% course = s&.course %>

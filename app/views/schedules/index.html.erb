@@ -30,7 +30,7 @@
             <div class="number"><%= i + 1 %></div>
           </div>
       <% else %>
-          <% schedule = find_schedule(@schedules, (j + 1), (i + 1)) %>
+          <% schedule = find_schedule(@schedules, j, (i + 1)) %>
           <% course = schedule&.course %>
           <div class="course-info course-content <%= i == 3 ? '' : 'no-bottom-border' %> <%= course.present? ? 'has-course' : '' %>"
               data-schedule-id="<%= schedule&.id %>">
