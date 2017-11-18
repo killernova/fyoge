@@ -29,7 +29,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - "8980:80"
+      - "80:80"
     volumes_from:
       - website
     links:
